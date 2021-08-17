@@ -1,4 +1,5 @@
-const {User} = require('../models')
+const {User} = require('../models/')
+// const router = require('../routes/index')
 
 class userController {
     static homepage (req,res){
@@ -12,7 +13,7 @@ class userController {
                 message: "error data could not be proccessed"
             })
         } else {
-            Resident.findOne({where: {email: req.params.email}})
+            User.findOne({where: {email: req.params.email}})
             .then((data) => {
                 if (!data) {
                     res.status(404).json({
@@ -53,14 +54,14 @@ class userController {
     static register (req,res){
         // res.send("register")
         console.log(req.body, "register req data")
-        const {firstName, lastName, email, phoneNumber, position,password} = req.body
+        const {firstName, lastName, email, phoneNumber, position, password} = req.body
 
         if (!firstName || !lastName || !email || !phoneNumber || !position ||!password){
             res.status(422).json({
                 message:"error data could not be processed"
             })
         } else {
-            const data = User.create({firstName, lastName, email, phoneNumber, position,password})
+            const data = User.create({firstName, lastName, email, phoneNumber, position, password})
             .then((data) => {
                 res.status(201).json({
                     message: "register Success",
@@ -79,15 +80,15 @@ class userController {
         //res.send("update success " + req.params.nik);
         console.log(req.body, "update req data")
         const {firstName, lastName, email, phoneNumber, position,password} = req.body
-        const targetEmail = req.params.email
+        const targetid = req.params.id
 
-        if (!name || !nik || !status || !gender || !birthdate || !targetEmail){
+        if (!firstName || !lastName || !email || !phoneNumber || !position ||!password){
             res.status(422).json({
                 message: "error data could not be processed"
             })
         } else {
             //kalau gakpake prommise asinkronus
-            const data = Resident.update({firstName, lastName, email, phoneNumber, position,password}, {where: {email: targetEmail}})
+            const data = User.update({firstName, lastName, email, phoneNumber, position,password}, {where: {id: targetid}})
             .then((data) => {
                 res.status(200).json({
                     message: "update success",
@@ -104,12 +105,12 @@ class userController {
     }
 
     static delete (req, res) {
-        if (!req.params.email) {
+        if (!req.params.id) {
             res.status(422).json({
                 message: "error data could not be proccessed"
             })
         } else {
-            Resident.destroy({where: {Email: req.params.email}})
+            User.destroy({where: {id: req.params.id}})
             .then((data) => {
                 res.status(200).json({
                     message: "Delete Success",
@@ -124,6 +125,37 @@ class userController {
             })
         }
     }
+    
+    static login(req, res) {
+        //fungsi format response
+        const format = (user) => {
+            const { id, email } = user;
+            return {
+                id,
+                email,
+                token: user.generateToken()
+            } 
+        }
+        
+        //lakukan auntetikasi
+        User.authenticate(req.body)
+        .then(user => {
+            res.json(format(user))
+        })
+        .catch(err => {
+            console.log(err)
+            res.json({
+                message: err
+            })
+        })
+    }
+    
+
+    static whoami (req, res) {
+        const currentUser = req.user
+        res.json(currentUser)
+    }
 }
+
 
 module.exports= userController

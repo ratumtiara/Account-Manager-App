@@ -13,4 +13,8 @@ router.put('/user/updateOne/:id',userController.update)
 
 router.delete('/user/deleteuser/:id',userController.delete)
 
+router.post('/user/login', userController.login)
+
+router.get('/user/whoami', userController.whoami)
+
 module.exports = router
