@@ -3,7 +3,7 @@ const {User} = require('../models/')
 
 class userController {
     static homepage (req,res){
-        res.render("index")
+        res.render("login")
     }
 
     static getOne (req, res) {
@@ -52,7 +52,7 @@ class userController {
     }
 
     static register (req,res){
-        // res.send("register")
+        res.render("register")
         console.log(req.body, "register req data")
         const {firstName, lastName, email, phoneNumber, position, password} = req.body
 
