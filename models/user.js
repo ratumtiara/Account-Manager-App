@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     generateToken = () =>{
       const payload ={
         id: this.id,
-        name:this.name
+        name:this.email
       }
 
       const rahasia ="ini rahasia";

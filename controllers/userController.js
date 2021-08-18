@@ -8,12 +8,12 @@ class userController {
 
     static getOne (req, res) {
         //res.send("getOne " + req.params.nik);
-        if (!req.params.email) {
+        if (!req.params.id) {
             res.status(422).json({
                 message: "error data could not be proccessed"
             })
         } else {
-            User.findOne({where: {email: req.params.email}})
+            User.findOne({where: {id: req.params.id}})
             .then((data) => {
                 if (!data) {
                     res.status(404).json({
@@ -52,8 +52,8 @@ class userController {
     }
 
     static register (req,res){
-        res.render("register")
-        console.log(req.body, "register req data")
+        // res.render("register")
+        // console.log(req.body, "register req data")
         const {firstName, lastName, email, phoneNumber, position, password} = req.body
 
         if (!firstName || !lastName || !email || !phoneNumber || !position ||!password){
@@ -61,7 +61,7 @@ class userController {
                 message:"error data could not be processed"
             })
         } else {
-            const data = User.create({firstName, lastName, email, phoneNumber, position, password})
+            const data = User.create({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, phoneNumber: req.body.phoneNumber, position: req.body.position,password: req.body.position})
             .then((data) => {
                 res.status(201).json({
                     message: "register Success",
@@ -76,19 +76,23 @@ class userController {
         }
     }
 
+    static daftar (req,res) {
+        res.render("register.ejs")
+    }
+
     static update (req, res) {
         //res.send("update success " + req.params.nik);
         console.log(req.body, "update req data")
         const {firstName, lastName, email, phoneNumber, position,password} = req.body
         const targetid = req.params.id
 
-        if (!firstName || !lastName || !email || !phoneNumber || !position ||!password){
+        if (!targetid){
             res.status(422).json({
                 message: "error data could not be processed"
             })
         } else {
             //kalau gakpake prommise asinkronus
-            const data = User.update({firstName, lastName, email, phoneNumber, position,password}, {where: {id: targetid}})
+            const data = User.update({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, phoneNumber: req.body.phoneNumber, position: req.body.position,password: req.body.position}, {where: {id: targetid}})
             .then((data) => {
                 res.status(200).json({
                     message: "update success",
