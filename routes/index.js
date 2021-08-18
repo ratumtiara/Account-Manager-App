@@ -15,8 +15,9 @@ router.put('/user/updateOne/:id',userController.update)
 
 router.delete('/user/deleteuser/:id',userController.delete)
 
+
 router.post('/user/login', userController.login)
 
-router.get('/user/whoami', userController.whoami) //belum lengkap
+router.get('/user/whoami', userController.whoami) //to get roken
 
 module.exports = router

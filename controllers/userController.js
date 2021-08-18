@@ -6,6 +6,8 @@ class userController {
         res.render("login")
     }
 
+
+
     static getOne (req, res) {
         //res.send("getOne " + req.params.nik);
         if (!req.params.id) {
@@ -51,6 +53,10 @@ class userController {
         })
     }
 
+    static daftar (req,res) {
+        res.render('register.ejs')
+    }
+
     static register (req,res){
         // res.render("register")
         // console.log(req.body, "register req data")
@@ -60,8 +66,15 @@ class userController {
             res.status(422).json({
                 message:"error data could not be processed"
             })
+        
         } else {
-            const data = User.create({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, phoneNumber: req.body.phoneNumber, position: req.body.position,password: req.body.position})
+            const data = User.create({
+                firstName: req.body.firstName, 
+                lastName: req.body.lastName, 
+                email: req.body.email, 
+                phoneNumber: req.body.phoneNumber, 
+                position: req.body.position,
+                password: req.body.password})
             .then((data) => {
                 res.status(201).json({
                     message: "register Success",
@@ -76,9 +89,7 @@ class userController {
         }
     }
 
-    static daftar (req,res) {
-        res.render("register.ejs")
-    }
+    
 
     static update (req, res) {
         //res.send("update success " + req.params.nik);
@@ -92,7 +103,14 @@ class userController {
             })
         } else {
             //kalau gakpake prommise asinkronus
-            const data = User.update({firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, phoneNumber: req.body.phoneNumber, position: req.body.position,password: req.body.position}, {where: {id: targetid}})
+            const data = User.update({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName, 
+                email: req.body.email, 
+                phoneNumber: req.body.phoneNumber, 
+                position: req.body.position,
+                password: req.body.password}, 
+                {where: {id: targetid}})
             .then((data) => {
                 res.status(200).json({
                     message: "update success",
@@ -132,6 +150,8 @@ class userController {
     
     static login(req, res) {
         //fungsi format response
+        // const {email, password} = req.body
+
         const format = (user) => {
             const { id, email } = user;
             return {
@@ -139,21 +159,19 @@ class userController {
                 email,
                 token: user.generateToken()
             } 
-        }
-        
+        }        
         //lakukan auntetikasi
         User.authenticate(req.body)
-        .then(user => {
-            res.json(format(user))
-        })
-        .catch(err => {
-            console.log(err)
-            res.json({
-                message: err
+            .then(user => {
+                res.json(format(user))
             })
-        })
+            .catch(err => {
+                // console.log(err)
+                res.json({
+                    message: err
+                })
+            })
     }
-    
 
     static whoami (req, res) {
         const currentUser = req.user
