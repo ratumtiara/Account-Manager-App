@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const userController = require('../controllers/userController')
+const restrict = require('../middleware/restrict')
 
 router.get('/', userController.homepage)
 
@@ -15,9 +16,10 @@ router.put('/user/updateOne/:id',userController.update)
 
 router.delete('/user/deleteuser/:id',userController.delete)
 
-
 router.post('/user/login', userController.login)
 
-router.get('/user/whoami', userController.whoami) //to get roken
+router.get('/user/masuk', userController.masuk)
+
+router.get('/user/whoami',restrict, userController.whoami) //to get roken
 
 module.exports = router

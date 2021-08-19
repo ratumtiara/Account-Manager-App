@@ -1,0 +1,54 @@
+{
+    "swagger": "2.0",
+    "info":{
+        "description": "Tugas 3 punya kelompok 3",
+        "version": "1.0.0",
+        "title": "Account Manager App",
+        "contact": {
+            "email": "rtmtiara@gmail.com",
+            "phone": "+62"
+        },
+        "licence":{
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "http://localhost:3000",
+    "basePath":"/",
+    "tags":[
+        {
+            "name":"admin",
+            "description": "admin-only endpoints"
+        }
+        
+    ],
+    "schemas":[
+        "http"
+    ],
+    "paths":{
+        "/":{
+            "get":{
+                "tags":[
+                    "admins"
+                ],
+                "summary":"Homepage",
+                "description":"sent a homepage to user",
+                "operationId": "getHomepage",
+                "produce":[
+                    "text/html"
+                ],
+                "parameters":[],
+                "responses":{
+                    "200":{
+                        "description": "get result of homepage",
+                        "schema": {
+                            "type":"file"
+                            
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

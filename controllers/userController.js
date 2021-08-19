@@ -3,7 +3,7 @@ const {User} = require('../models/')
 
 class userController {
     static homepage (req,res){
-        res.render("login")
+        res.redirect('/user/masuk')
     }
 
 
@@ -151,15 +151,16 @@ class userController {
     static login(req, res) {
         //fungsi format response
         // const {email, password} = req.body
-
+        
         const format = (user) => {
             const { id, email } = user;
             return {
                 id,
                 email,
                 token: user.generateToken()
-            } 
-        }        
+            }                         
+        }    
+            
         //lakukan auntetikasi
         User.authenticate(req.body)
             .then(user => {
@@ -171,6 +172,10 @@ class userController {
                     message: err
                 })
             })
+    }
+
+    static masuk (req,res) {
+        res.render('login.ejs')
     }
 
     static whoami (req, res) {
