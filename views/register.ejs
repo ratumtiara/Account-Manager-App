@@ -3,14 +3,17 @@
     <head>
         <meta charset="utf-8">
 		<title>Login Form</title>
-        <link rel="stylesheet" type="text/css" href="/css/styles.css">        
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">   
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">     
         
     </head>
     <body>
         <h1>Register Your Account Here</h1>
 
         <div class="box_login">
-            <p class="subjudul">create account</p>
+            <p class="subjudul">create account</p>            
+                
+
             <form action="/user/createuser" method="POST">
                 
                 <label for "firstName">First Name</label>
@@ -22,28 +25,27 @@
                 <label for "email">Email</label>
                 <input type="email" id = "email" name="email" required class="form_login">                
                 
-                <label for "phoneNumber">phoneNumber</label>
+                <label for "phoneNumber">Phone Number</label>
                 <input type="text" id = "phoneNumber" name="phoneNumber" required class="form_login">
-                <label for "position">position</label>
-                <input type="text" id = "position" name="position" required class="form_login">
-                <!-- labelnya belum masuk -->
                 
-                <!-- <select class="form-control"> 
-                    <option selected>Front-end</option> 
-                    <option>Back-end</option>
-                    <option>Dev-Ops</option>
-                    <option>Designer</option> 
-                </select> -->
-
+                <label for "position">Position</label>
+                <!-- <input list="positions" id = "position" name="position" required class="form_login"> -->
+                <select type="text" id = "position" name="position" required class="form_login">
+                    <option value=""></option>
+                    <option value="Front-end">Front-end</option>
+                    <option value="Back-end">Back-end</option>
+                    <option value="DevOps">DevOps</option>
+                    <option value="Designer">Designer</option>
+                </select>    
+                  
                 <br></br>
-                <label for "password">password</label>
-                <input type="password" id = "password" name="password" required class="form_login"> 
-                                
-               
+                <label for "password">Password</label>
+                <input type="password" id = "password" name="password" required class="form_login">
+                          
                 <button type="submit">Register</button>
                 <br></br>
                 <p>Already have an account?</p>
-                <a class=link href="/user/login">login</a>
+                <a class=link href="/user/masuk">login</a>
                 <br></br>
             </form>
         </div>

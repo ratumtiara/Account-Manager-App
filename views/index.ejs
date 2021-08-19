@@ -2,18 +2,37 @@
 <html>
     <head>
         <meta charset="utf-8">
-		<title>account manager app page 1</title>
-        <link rel="stylesheet" type="text/css" href="/css/styles.css">        
+		<title>Success Login</title>
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">    
         
     </head>
     <body>
-        <h1>Welcome account manager app</h1>
+        <h1>Welcome to Account Manager App Team 3</h1>
 
-        <div>
-            <p>welcome <%= firstName %></p>
-            <p>email: <%= email %></p>
-            <p>position: <%= position %></p>            
-        </div>
+        <div id="myNav" class="overlay">
+            <a class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+              <a href="/user/masuk/">Login</a>
+              <a href="/user/daftar/">Register</a>
+              <a href="/user/getall/">Get All data</a>
+              
+            </div>
+          </div>
+                    
+          <h3>Click on the element below to open the fullscreen menu &#10024</h3>
+            <div class="btn-click">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Click Me !</span>
+          
+          <script>
+          function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+          }
+          
+          function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+          }
+          </script>         
             
     </body>
 </html>

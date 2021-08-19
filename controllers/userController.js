@@ -3,10 +3,8 @@ const {User} = require('../models/')
 
 class userController {
     static homepage (req,res){
-        res.redirect('/user/masuk')
+        res.render('index.ejs')
     }
-
-
 
     static getOne (req, res) {
         //res.send("getOne " + req.params.nik);
@@ -19,6 +17,7 @@ class userController {
             .then((data) => {
                 if (!data) {
                     res.status(404).json({
+                        // res.redirect('https://http.cat/[404]'),
                         message: "Data Not Found",
                     })
                 } else {
@@ -57,8 +56,12 @@ class userController {
         res.render('register.ejs')
     }
 
+    static successregister(req,res){
+        res.render('successregister.ejs')
+    }
+
     static register (req,res){
-        // res.render("register")
+        res.redirect('/user/successregister/')
         // console.log(req.body, "register req data")
         const {firstName, lastName, email, phoneNumber, position, password} = req.body
 
@@ -88,7 +91,6 @@ class userController {
             })
         }
     }
-
     
 
     static update (req, res) {
@@ -151,7 +153,7 @@ class userController {
     static login(req, res) {
         //fungsi format response
         // const {email, password} = req.body
-        
+        // res.redirect('user/masuk/successlogin')
         const format = (user) => {
             const { id, email } = user;
             return {
@@ -160,7 +162,6 @@ class userController {
                 token: user.generateToken()
             }                         
         }    
-            
         //lakukan auntetikasi
         User.authenticate(req.body)
             .then(user => {
@@ -178,6 +179,12 @@ class userController {
         res.render('login.ejs')
     }
 
+    static successlogin (req,res){
+        res.render('index.ejs')
+    }
+
+
+    // token JWT
     static whoami (req, res) {
         const currentUser = req.user
         res.json(currentUser)

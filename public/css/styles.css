@@ -1,25 +1,32 @@
 body{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: rgba(202, 199, 199, 0.979);
+    background-color: rgba(199, 199, 184, 0.979);
 }
 
 h1{
     text-align: center;
+    font-size:40pt;
+    padding: 50px 50px 5px 50px;
+    color: rgb(65, 59, 59);
+}
+
+h3{    
+    text-align: center;
     font-size:20pt;
     padding: 50px 50px 5px 50px;
-    color: rgb(82, 79, 79);
+    color: rgb(65, 59, 59);
 }
 
 label{
     font-size: 13pt;
-    color: midnightblue;
+    color:rgb(17, 66, 38);
 }
 
 .subjudul{
     text-align:center;
     text-transform: capitalize;
     font-size: 15pt;
-    color: midnightblue;
+    color: rgb(17, 66, 38);
 }
 
 .box_login{
@@ -39,8 +46,13 @@ label{
     border-radius: 4px;
 }
 
+.btn-click{
+    text-align:center;
+    padding-left: auto;
+}
+
 button{
-    background: midnightblue;
+    background: darkolivegreen;
 	color: white;
 	font-size: 11pt;
 	width: 100%;
@@ -52,16 +64,79 @@ button:hover{
     opacity: 0.5;
 }
 
+
 .link{
-    color: #ececec;
+    color: #ffffff;
 	text-decoration: none;
 	font-size: 10pt;
-    background-color: rgb(19, 3, 63);
+    background-color: rgb(33, 48, 34);
     padding: 10px 20px;
-    width: 00%;
+    width: 0%;
 }
 
 .link:hover{
     opacity: 0.5;
 }
+
+.linksuccess{    
+    color: #ececec;
+	text-decoration: none;
+	font-size: 10pt;
+    background-color: darkolivegreen;
+    padding: 10px 50px ;
+    width: 100%;
+
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
+
+
 
