@@ -1,7 +1,7 @@
 body{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: rgba(199, 199, 184, 0.979);
-    background-image: url("16.jpg");
+    background-image: url("14.jpg");
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -90,13 +90,14 @@ button:hover{
 
 .linksuccess{    
     color: #ececec;
-	text-decoration: none;
-	font-size: 10pt;
-    background-color: darkolivegreen;
-    padding: 10px 50px ;
-    width: 100%;
-
+	text-align:center;
+    justify-content: center;
+	font-size: 15pt;
+    background-color: rgb(47, 107, 84);       
+    
 }
+
+
 
 .overlay {
     height: 100%;

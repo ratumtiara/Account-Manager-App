@@ -15,8 +15,10 @@ router.get('/user/daftar/',userController.daftar)
 router.get('/user/successregister/', userController.successregister)
 
 router.put('/user/updateOne/:id',userController.update)
+router.get('/user/update/',userController.successupdate)
 
 router.delete('/user/deleteuser/:id',userController.delete)
+router.get('/user/delete/',userController.successdelete)
 
 router.post('/user/login/', userController.login)
 

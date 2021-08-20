@@ -94,7 +94,8 @@ class userController {
     
 
     static update (req, res) {
-        //res.send("update success " + req.params.nik);
+        //res.send("update success " + req.params.nik);(
+        res.redirect('/user/update/')
         console.log(req.body, "update req data")
         const {firstName, lastName, email, phoneNumber, position,password} = req.body
         const targetid = req.params.id
@@ -128,7 +129,13 @@ class userController {
         }
     }
 
+    static successupdate (req,res){
+        res.render("successupdate.ejs")
+    }
+
     static delete (req, res) {
+        res.redirect('/user/delete/')
+        
         if (!req.params.id) {
             res.status(422).json({
                 message: "error data could not be proccessed"
@@ -148,6 +155,10 @@ class userController {
                 })
             })
         }
+    }
+
+    static successdelete (req,res){
+        res.render("successdelete.ejs")
     }
     
     static login(req, res) {
