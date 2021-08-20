@@ -23,31 +23,35 @@
             </div>
           </div>
                     
-          <h3>Click on the element below to open the fullscreen menu &#10024</h3>
-            <div class="btn-click">
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Click Me !</span>
-                    
+          <h3>Click on the element below to open the fullscreen menu</h3>
+          <div class="btn-click">
+          <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Click Me !</span>                    
           <script>
           function openNav() {
             document.getElementById("myNav").style.width = "100%";
-          }
-          
+          }          
           function closeNav() {
             document.getElementById("myNav").style.width = "0%";
           }
-          </script>
+          function getOne() {
+            var action_src="http://localhost:3000/user/getone/" + document.getElementsByName("id")[0].value;
+            var getId = document.getElementById('formid');
+            getId.action = action_src
+            // var getId = document.getElementsByName("id").value;
+            // var url = `http://localhost:3000/user/getone/${getId}`
+            // console.log(url);
+          }
+          </script>          
+          </div>
 
-          <form action="/user/getone" method="get">
-          <br></form>
-          <p>Get one data below here</p>
-          <label for="id"> Submit the number of the Id: </label>
-          <input type="text" id="id" name="id">
-          <button type="submit">Submit</button>
+          <br>
+          <form id="formid" method="GET" onsubmit="getOne()">
+          <br>          
+          <p class="submitgetone">Get one data below here with submit the number of the id: </p>
           
-          </form>
-          
-
-          
-            
+          <input type="text" id="id" name="id" class="inputgetone">
+          <input type="submit" onsubmit="getOne(url)" value="Submit" class="inputgetone" >      
+         
+          </form>             
     </body>
 </html>
