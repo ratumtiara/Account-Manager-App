@@ -15,6 +15,7 @@
             <div class="overlay-content">
               <a href="/user/masuk/">Login</a>
               <a href="/user/daftar/">Register</a>
+              <!-- <a href="/user/getone/">Get Data</a> -->
               <a href="/user/getall/">Get All data</a>
               <a href="/user/update/">Update</a>
               <a href="/user/delete/">Delete</a>
@@ -25,7 +26,7 @@
           <h3>Click on the element below to open the fullscreen menu &#10024</h3>
             <div class="btn-click">
             <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Click Me !</span>
-          
+                    
           <script>
           function openNav() {
             document.getElementById("myNav").style.width = "100%";
@@ -34,7 +35,19 @@
           function closeNav() {
             document.getElementById("myNav").style.width = "0%";
           }
-          </script>         
+          </script>
+
+          <form action="/user/getone" method="get">
+          <br></form>
+          <p>Get one data below here</p>
+          <label for="id"> Submit the number of the Id: </label>
+          <input type="text" id="id" name="id">
+          <button type="submit">Submit</button>
+          
+          </form>
+          
+
+          
             
     </body>
 </html>

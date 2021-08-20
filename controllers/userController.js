@@ -35,6 +35,7 @@ class userController {
             })
         }
     }
+    
         
     static getAll (req,res){
         // res.send("getAll")
