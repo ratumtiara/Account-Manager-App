@@ -1,7 +1,7 @@
 {
   "name": "tugas3",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ini adalah tugas kelompok yang terdiri dari 3 orang per kelompok.\r Account Manager App adalah sebuah aplikasi web untuk management akun, menggunakan express.js sebagai framework backend dan memanfaatkan\r EJS untuk View Engine nya, untuk database menggunakan PostgreSQL namun kita akan menggunakan ORM Sequelize juga.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,5 +21,17 @@
     "pg": "^8.7.1",
     "sequelize": "^6.6.5",
     "validator": "^13.6.0"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ratumtiara/Account-Manager-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ratumtiara/Account-Manager-App/issues"
+  },
+  "homepage": "https://github.com/ratumtiara/Account-Manager-App#readme"
 }

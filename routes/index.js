@@ -5,7 +5,7 @@ const restrict = require('../middleware/restrict')
 router.get('/', userController.homepage)
 
 router.get('/user/getone/:id',userController.getOne)
-router.get('/user/getone/',userController.getOne)
+// router.get('/user/getone',userController.getOne)
 
 router.get('/user/getall/',userController.getAll)
 

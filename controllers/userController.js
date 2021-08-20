@@ -16,13 +16,14 @@ class userController {
             User.findOne({where: {id: req.params.id}})
             .then((data) => {
                 if (!data) {
+                    res.render("404.ejs")
                     res.status(404).json({
                         // res.redirect('https://http.cat/[404]'),
                         message: "Data Not Found",
                     })
                 } else {
                     res.status(200).json({
-                        message: "Get One Success",
+                        message: "fetch user Success",
                         data: data
                     })
                 }
@@ -42,7 +43,7 @@ class userController {
         User.findAll()
         .then((data) => {
             res.status(200).json({
-                message: "get all success",
+                message: "fetch all user success",
                 data: data
             })
         })
@@ -81,7 +82,7 @@ class userController {
                 password: req.body.password})
             .then((data) => {
                 res.status(201).json({
-                    message: "register Success",
+                    message: "User created",
                     data:data
                 })
             })
@@ -181,6 +182,7 @@ class userController {
             })
             .catch(err => {
                 // console.log(err)
+                res.render("404.ejs")
                 res.json({
                     message: err
                 })

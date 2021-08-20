@@ -35,14 +35,22 @@
           function closeNav() {
             document.getElementById("myNav").style.width = "0%";
           }
+          function getOne() {
+            var action_src="http://localhost:3000/user/getone/" + document.getElementsByName("id")[0].value;
+            var getId = document.getElementById('formid');
+            getId.action = action_src
+            // var getId = document.getElementsByName("id").value;
+            // var url = `http://localhost:3000/user/getone/${getId}`
+            // console.log(url);
+          }
           </script>
 
-          <form action="/user/getone" method="get">
-          <br></form>
+          <form id="formid" method="GET" onsubmit="getOne()">
+          <br>
           <p>Get one data below here</p>
           <label for="id"> Submit the number of the Id: </label>
           <input type="text" id="id" name="id">
-          <button type="submit">Submit</button>
+          <button type="submit" onsubmit="getOne(url)" >Submit</button>
           
           </form>
           
