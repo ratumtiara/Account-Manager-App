@@ -29,6 +29,7 @@ class userController {
                 }
             })
             .catch((err) => {
+                res.render('500.ejs')
                 res.status(500).json({
                     message: "Internal Server Error",
                     log: err
@@ -48,6 +49,7 @@ class userController {
             })
         })
         .catch((err) => {
+            res.render('500.ejs')
             res.status(500).json({
                 message:"internal server error"
             })
@@ -62,12 +64,13 @@ class userController {
         res.render('successregister.ejs')
     }
 
-    static register (req,res){
-        res.redirect('/user/successregister/')
+    static webregister(req,res){
+        // res.redirect('/user/successregister/')
         // console.log(req.body, "register req data")
         const {firstName, lastName, email, phoneNumber, position, password} = req.body
 
         if (!firstName || !lastName || !email || !phoneNumber || !position ||!password){
+            res.render('404.ejs')
             res.status(422).json({
                 message:"error data could not be processed"
             })
@@ -80,15 +83,48 @@ class userController {
                 phoneNumber: req.body.phoneNumber, 
                 position: req.body.position,
                 password: req.body.password})
-            .then((data) => {
+            .then((data) => {res.redirect('/user/successregister/')
                 res.status(201).json({
                     message: "User created",
                     data:data
                 })
             })
             .catch((err) => {
+                res.render('500.ejs')
                 res.status(500).json({
                     message:"internal server error"
+                })
+            })
+        }
+    }    
+
+    
+
+
+    static register (req,res){
+        // res.redirect('/user/successregister/')
+        // console.log(req.body, "register req data")
+        const {firstName, lastName, email, phoneNumber, position, password} = req.body
+
+        if (!firstName || !lastName || !email || !phoneNumber || !position ||!password){
+            res.render('404.ejs')
+            res.status(422).json({
+                message:"error data could not be processed"
+            })
+        
+        } else {
+            const data = User.create ({firstName,lastName,email,phoneNumber,position,password})
+
+            .then((data) => {
+                res.status(201).json({                    
+                    message: "User created",
+                    data:data
+                })
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message:"internal server error",
+                    log:err 
                 })
             })
         }
@@ -97,7 +133,7 @@ class userController {
 
     static update (req, res) {
         //res.send("update success " + req.params.nik);(
-        res.redirect('/user/update/')
+        // res.redirect('/user/update/')
         console.log(req.body, "update req data")
         const {firstName, lastName, email, phoneNumber, position,password} = req.body
         const targetid = req.params.id
@@ -136,7 +172,7 @@ class userController {
     }
 
     static delete (req, res) {
-        res.redirect('/user/delete/')
+        // res.redirect('/user/delete/')
         
         if (!req.params.id) {
             res.status(422).json({
@@ -151,6 +187,7 @@ class userController {
                 })
             })
             .catch((err) => {
+                res.render('500.ejs')
                 res.status(500).json({
                     message: "Internal Server Error",
                     log: err

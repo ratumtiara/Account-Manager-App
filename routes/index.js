@@ -9,13 +9,14 @@ router.get('/user/getone/:id',userController.getOne)
 
 router.get('/user/getall/',userController.getAll)
 
-router.post('/user/createuser/',userController.register)
+router.post('/user/createuser/',userController.register) //cuma buat postman
+router.post('/user/webregister/',userController.webregister)
 
 router.get('/user/daftar/',userController.daftar)
 
 router.get('/user/successregister/', userController.successregister)
 
-router.put('/user/updateOne/:id',userController.update)
+router.put('/user/updateOne/:id',userController.update) //cuma buat postman
 router.get('/user/update/',userController.successupdate)
 
 router.delete('/user/deleteuser/:id',userController.delete)
