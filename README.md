@@ -12,7 +12,7 @@ This project using:
 
 DATABASE:
 
-nama database:-
+Database name:-
 
 tabel's name: user
 
@@ -26,7 +26,8 @@ Colomn :
 
 
 CRUD Backend:
-1.Create
+
+1. Create
   endpoint create account with method POST (localhost:3000/user/createuser)
   respon:
   {
@@ -34,8 +35,9 @@ CRUD Backend:
             message: "User created",
             data: {data user yang dibuat}
         }
+
 2. Read 
-*getAll
+  * getAll
   endpoint get all user data from database with method GET
   (localhost:3000/user/getall)
   respon:
@@ -44,7 +46,7 @@ CRUD Backend:
             message: "fetch all user success"
             data: [{data1}, {data2}, {dataN}] (array of object)
             }
-* getOne
+  * getOne
         endpoint to retrieve one of the User data in the database with the GET method using params like "localhost:3000/user/getone/:id"
         Response:
             {
@@ -52,6 +54,7 @@ CRUD Backend:
             message: "fetch user success"
             data: {data user}
             }
+
 3. Update
   endpoint to update data from a User using params with method PUT
   (localhost:3000/user/updateOne/:id)
@@ -61,6 +64,7 @@ CRUD Backend:
             message: "update success",
             data: {data user yang baru terupdate}
         }
+
 4. Delete
   endpoint to delete User use params with method DELETE
   ("localhost:3000/user/deleteuser/:id")
@@ -71,6 +75,7 @@ CRUD Backend:
             message: "delete success"
 
         }
+        
 ADDITIONAL:
 Error handler
 error handler to check the completeness of the data sent on the request.
