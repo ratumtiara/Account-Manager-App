@@ -1,5 +1,5 @@
 This is a project about Account Manager App.
-created by team 3 (Dimas, Ihsa, Ratu) for assignment 3
+created by team 3 (Dimas, Ikhsa, Ratu) for assignment 3
 
 This project using:
 1. Express.js (framework backend)
@@ -11,8 +11,11 @@ This project using:
 
 
 DATABASE:
+
 nama database:-
+
 tabel's name: user
+
 Colomn :
 1. id {PK, unique}
 2. firstName {string, not null}
@@ -31,7 +34,6 @@ CRUD Backend:
             message: "User created",
             data: {data user yang dibuat}
         }
-
 2. Read 
 *getAll
   endpoint get all user data from database with method GET
@@ -43,14 +45,13 @@ CRUD Backend:
             data: [{data1}, {data2}, {dataN}] (array of object)
             }
 * getOne
-        Buatlah endpoint to retrieve one of the User data in the database with the GET method using params like "localhost:3000/user/getone/:id"
+        endpoint to retrieve one of the User data in the database with the GET method using params like "localhost:3000/user/getone/:id"
         Response:
             {
             status: 200,
             message: "fetch user success"
             data: {data user}
             }
-
 3. Update
   endpoint to update data from a User using params with method PUT
   (localhost:3000/user/updateOne/:id)
@@ -60,7 +61,6 @@ CRUD Backend:
             message: "update success",
             data: {data user yang baru terupdate}
         }
-
 4. Delete
   endpoint to delete User use params with method DELETE
   ("localhost:3000/user/deleteuser/:id")
@@ -71,7 +71,6 @@ CRUD Backend:
             message: "delete success"
 
         }
-
 ADDITIONAL:
 Error handler
 error handler to check the completeness of the data sent on the request.
